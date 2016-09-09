@@ -1,34 +1,28 @@
-<ol class="breadcrumb">
-    <li class="active">Home</a></li>
-</ol>
-
-<br/>
 
 <%- partial ('partials/statusmessage.ejs') %>
 
-<h2>Employees</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="text-align:center">
   <tr>
-    <th>ID</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Home Phone</th>
-    <th>Cell Phone</th>
-    <th>Password</th>
-    <th>Active</th>
+    <th style="text-align:center">ID</th>
+    <th style="text-align:center">Type</th>
+    <th style="text-align:center">Brand</th>
+    <th style="text-align:center">Volume #</th>
+    <th style="text-align:center">Units</th>
+    <th style="text-align:center">Cost</th>
+    <th style="text-align:center">Expiration Date</th>
+    <th style="text-align:center">Customer Service #</th>
   </tr>
-  <% if(typeof employees != "undefined" && employees.length > 0){ %>
-    <% employees.forEach(function(employee){ %>
+  <% if(typeof juices != "undefined" && juices.length > 0){ %>
+    <% juices.forEach(function(juice){ %>
       <tr>
-        <td><%= employee.id %></td>
-        <td><%= employee.firstName %></td>
-        <td><%= employee.lastName %></td>
-        <td><%= employee.email %></td>
-        <td><%= employee.homePhone %></td>
-        <td><%= employee.cellPhone %></td>
-        <td><%= employee.password %></td>
-        <td><%= employee.active %></td>
+        <td><%= juice.id %></td>
+        <td><%= juice.type %></td>
+        <td><%= juice.brand %></td>
+        <td><%= juice.volumeNumber %></td>
+        <td><%= juice.volumeUnits %></td>
+        <td><%= juice.cost %></td>
+        <td><%= juice.expirationDate %></td>
+        <td><%= juice.customerServiceNumber %></td>
       </tr>
     <% }) %>
   <% }else{ %>
