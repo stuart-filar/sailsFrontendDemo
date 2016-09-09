@@ -1,0 +1,47 @@
+
+<%- partial ('partials/statusmessage.ejs') %>
+
+<h2>Delete Juice</h2>
+
+  <table class="table table-striped table-bordered" style="text-align:center">
+  <tr>
+    <th style="text-align:center">ID</th>
+    <th style="text-align:center">Type</th>
+    <th style="text-align:center">Brand</th>
+    <th style="text-align:center">Volume #</th>
+    <th style="text-align:center">Units</th>
+    <th style="text-align:center">Cost</th>
+    <th style="text-align:center">Expiration Date</th>
+    <th style="text-align:center">Customer Service #</th>
+  </tr>
+  <% if(typeof juices != "undefined" && juices.length > 0){ %>
+    <% juices.forEach(function(juice){ %>
+      <tr>
+        <td><%= juice.id %></td>
+        <td><%= juice.type %></td>
+        <td><%= juice.brand %></td>
+        <td><%= juice.volumeNumber %></td>
+        <td><%= juice.volumeUnits %></td>
+        <td><%= juice.cost %></td>
+        <td><%= juice.expirationDate %></td>
+        <td><%= juice.customerServiceNumber %></td>
+      </tr>
+    <% }) %>
+  <% }else{ %>
+      <tr>
+        <td colspan="8">0 records found</td>
+      </tr>
+  <% } %>
+</table>
+<form action="/delete" method="POST" class="form-horizontal">
+  <select id="id" name="id" onchange="this.form.submit()">
+    <option selected="selected" style="display:none">Select a juice to delete from an ID number in the table above</option>
+    <% if(typeof juices != "undefined" && juices.length > 0){ %>
+      <% juices.forEach(function(juice){ %>
+        <option><%= juice.id %></option>
+      <% }) %>
+    <% }else{ %>
+      <option>0 records found</option>
+    <% } %>
+  </select>
+</form>
